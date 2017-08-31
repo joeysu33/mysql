@@ -1,0 +1,9 @@
+==================MySQL索引操作=======================
+1.创建索引
+create index <index_name> on <table_name> (<column_name>)
+例如: create index student_name_index on student (Name);
+
+    1.1创建唯一的索引（不允许使用重复的值)
+    //学生名称需要保持唯一
+    create unique index <index_name> on <table_name> (<column_name>);
+    例如: create unique index student_name_index on student(name);

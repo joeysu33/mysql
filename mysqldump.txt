@@ -1,0 +1,24 @@
+======MYSQL的常用命令======
+1.导出整个数据库 mysqldump -u <username> -p <dbname> > <export.sql>
+  mysqldump -u user -p tempdb > tempdb.sql
+
+2.导出一个表 mysqldump -u <username> -p <dbname> <tblname> > <export_tbl.sql>
+  mysqldump -u user -p tmpdb tbl > tempdb_tbl.sql
+  
+3.导出一个数据库结构
+  mysqldump -u user -p -d -add-drop-table tmpdb > tempdb.sql
+  -d 没有数据
+  -add-drop-table 在每个create之前增加一个drop table (首先删除原来的表)
+
+4.导入数据库
+  A:常用source命令
+    进入mysql数据库控制台
+    use 数据库
+    source tempdb.sql
+
+  B:使用mysqldump命令
+    mysqldump -u user -p dbname < filename.sql
+
+  C:使用mysql命令
+    mysql -u username -p -D dbname < filename.sql
+

@@ -1,0 +1,8 @@
+========MysqlAdmin的命令操作========
+1.修改用户密码
+mysqladmin -u <username> -p password <new_password>
+例如: mysqladmin -u root -p password 123456 
+将root用户的新密码修改为123456
+
+
+

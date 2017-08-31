@@ -1,0 +1,31 @@
+===================MySQL存储过程===================
+存储过程和触发器都是一组MySQL语句的操作，但是触发器的操作是被动的，
+满足时间和条件的情况下，而存储过程的调用则是主动的。
+触发器更像是一个注册的回调函数，而存储过程就是一个函数。
+存储过程可以携带函数参数，但是触发器不能。
+
+创建存储过程
+create definer=<user>@<hostname> procedure <procedure_name>
+(in|out parameter_name parameter_type, ...)
+begin
+    declare c int; 声明变量，需要指定类型
+    if xxxx
+    end if; if语句的使用格式，类似bash
+end
+
+create definer=`root`@`localhost` procedure `proc_adder` 
+(in a int, in b int, out sum int )
+begin
+    declare c int;
+
+    if a is null then set a = 0;
+    end if;
+
+    if b is null then set b = 0;
+    end if;
+
+    set sum = a + b;
+end
+
+
+

@@ -1,0 +1,10 @@
+========MySQL命令详细说明============
+1.select [all|distinct|distinctrow|top] [*|table.*|table.]field [as alias1],[table.]field [as alias2] 
+    from tableexpression[,...] [in externaldatabase]
+    [where ...]
+    [group by ...]
+    [having ...]
+    [order by ...]
+    [with owneraccess option]
+
+

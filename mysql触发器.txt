@@ -1,0 +1,21 @@
+===================MySQL触发器===================
+触发器(trigger):监视某种情况，并触发相应的操作(可以理解为注册回调函数)
+1.监视地点 (table)
+2.监视事件 (insert/update/delete)
+3.触发事件 (after/before)
+4.触发事件 (insert/update/delete)
+
+create trigger <triggername> 
+after/before insert/update/delete on <tablename>
+for each row #在mysql中是固定格式
+begin
+#sql语句
+end;
+
+删除trigger 
+drop trigger <trigger_name>
+
+======================================
+在insert操作中，insert对应的行数据（元组）是关键词new
+在delete操作中，对应操作的行数据（元组）  是关键词old
+对于update操作，被修改的行，修改前的数据，用old来表示，修改后的数据用new来表示

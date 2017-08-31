@@ -1,0 +1,38 @@
+=======mysql用户权限的详细说明========
+1.grant 授权中如果没有该用户的话，就直接创建一个新的用户
+2.做完授权管理，包含用户密码修改，需要更新数据库权限
+  flush privileges;
+
+======================================
+
+mysql> grant all on *.* to root@202.116.39.2 identified by "123456"
+
+1.grant与on之间是各种权限，例如insert, select, update等
+  on之后是数据库名和表名，第一个*表示所有的数据库，第二个*表示所有的表
+  网络用户名全称 <user_name>@<host_name_or_ip> identified by "password"
+  如果没有密码可以缺省
+  例如 grant all on tempdb.tmp to nopasswduser@localhost 
+       grant all on tempdb.* to passworduser@localhost identified by "passwd"
+
+2.创建一个可以从任何地方连接数据库服务器的完全超级用户，但必须使用一个口令
+  grant all privileges on *.* to <user_name>@<user_ipaddr> identified by 'passwd'
+
+    
+3.增加新用户(必须要指定密码),identified by 不可缺省
+  //只给定<user_name> 选择的权限,如果是all则是操作数据库的所有权限
+  //对没有增删权限的用户，是不可操作数据库数据库的，否则会报错。
+  grant select on <db_name>.* to <user_name>@<user_ipaddr> identified by 'password'
+  格式:
+  GRANT ALL PRIVILEGES ON *.* ON <USER_NAME>@<HOST_NAME> IDENTIFIED BY 'PASSWD' WITH GRANT_OPTION
+
+4.删除授权
+  //revoke 撤销，删除，撤销用户的某一项权限是不需要密码的(identified by)
+  revoke all privileges on *.* from <user_name>@<host_name>
+  flush privileges;
+
+5.如果grant的最后携带with grant option则该用户可以给其他用户赋予权限。
+  grant <operators> on <dbname>.<tblname> to <username>@<hostname> identified by '<password>' with grant option
+
+
+
+
